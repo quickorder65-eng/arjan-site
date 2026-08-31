@@ -318,7 +318,7 @@
         '<div class="bc-actions">' +
           '<a class="btn btn--sun btn--sm" href="tel:' + b.phone + '">Позвонить</a>' +
           '<a class="btn btn--wa btn--sm" href="https://wa.me/' + b.whatsapp + '" target="_blank" rel="noopener">WhatsApp</a>' +
-          '<a class="btn btn--ghost btn--sm js-open-map" href="https://www.google.com/maps?q=' + encodeURIComponent(b.mapQuery) + '" target="_blank" rel="noopener">Открыть на карте</a>' +
+          '<a class="btn btn--ghost btn--sm js-open-map" href="' + (b.mapUrl || ('https://www.google.com/maps?q=' + encodeURIComponent(b.mapQuery))) + '" target="_blank" rel="noopener">Открыть на карте</a>' +
         '</div>' +
       '</div>'
     );
