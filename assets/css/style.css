@@ -470,6 +470,20 @@ footer .logo img{filter:brightness(0) invert(1)}
 .cform .agree{font-size:12px;color:var(--steel);margin-top:12px;display:flex;gap:8px;align-items:flex-start}
 .cform .agree input{width:16px;height:16px;flex:0 0 16px;margin-top:2px}
 .cform .agree a{text-decoration:underline}
+
+/* ===== кастомный select (вместо нативного <select>) ===== */
+.csel{position:relative}
+.csel select{position:absolute;opacity:0;pointer-events:none;width:1px;height:1px;overflow:hidden}
+.csel-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px;border:1px solid var(--line-strong);border-radius:9px;font-family:var(--font-body);font-size:15px;background:var(--paper);color:var(--ink);cursor:pointer;text-align:left;transition:border-color .18s,box-shadow .18s}
+.csel-btn:hover{border-color:var(--sun)}
+.csel.open .csel-btn{border-color:var(--sun);outline:2px solid var(--sun-soft)}
+.csel-val{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.csel-arrow{width:16px;height:16px;color:var(--steel);flex:0 0 16px;transition:transform .2s}
+.csel.open .csel-arrow{transform:rotate(180deg);color:var(--sun)}
+.csel-list{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:80;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 24px 50px -18px rgba(22,25,29,.4);padding:6px;max-height:248px;overflow-y:auto;list-style:none;margin:0}
+.csel-opt{padding:10px 12px;border-radius:8px;font-size:14.5px;color:var(--ink);cursor:pointer;transition:background .15s}
+.csel-opt:hover,.csel-opt.hl{background:var(--mist)}
+.csel-opt.active{background:var(--sun-tint);color:var(--sun);font-weight:600}
 .form-msg{display:none;padding:14px 16px;border-radius:10px;font-size:14px;margin-top:14px;font-weight:600}
 .form-msg.ok{display:block;background:rgba(31,168,85,.12);color:#187a3d}
 .form-msg.err{display:block;background:var(--sun-tint);color:var(--sun)}
