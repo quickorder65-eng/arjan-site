@@ -91,6 +91,30 @@
 
 <section class="section section--tight" style="padding-top:0">
   <div class="wrap">
+    <div class="shead" style="margin-bottom:24px">
+      <span class="eyebrow">Видео</span>
+      <h2 style="font-size:clamp(22px,2.6vw,30px);margin:12px 0 10px">Объект вживую</h2>
+      <p class="lead" style="max-width:640px;margin:0">Панорамная раздвижная алюминиевая система ArJan, установленная на реальном объекте в Алматы.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:22px;margin-bottom:8px">
+      <div class="proof-visual" style="aspect-ratio:16/9;border-color:var(--line)">
+        <button type="button" class="video-poster-play" data-video-trigger data-video-src="/public/videos/web/object-video-1.mp4" data-video-title="Раздвижная алюминиевая система ArJan на объекте">
+          <img src="/public/videos/posters/object-video-1-poster.jpg" alt="Раздвижная алюминиевая система ArJan на объекте — видео" loading="lazy" width="1280" height="720">
+          <span class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>
+        </button>
+      </div>
+      <div class="proof-visual" style="aspect-ratio:9/16;border-color:var(--line)">
+        <button type="button" class="video-poster-play" data-video-trigger data-video-src="/public/videos/web/object-video-2.mp4" data-video-title="Раздвижная система ArJan — крупным планом">
+          <img src="/public/videos/posters/object-video-2-poster.jpg" alt="Раздвижная алюминиевая система ArJan — крупным планом, видео" loading="lazy" width="720" height="1280">
+          <span class="vp-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight" style="padding-top:0">
+  <div class="wrap">
     <div class="pf-filters" data-pf-filters>
       <button type="button" class="pf-filter active" data-filter="all">Все</button>
       <button type="button" class="pf-filter" data-filter="jk">Жилые комплексы</button>
@@ -219,7 +243,8 @@ window.ARJAN_PORTFOLIO = [
   ]},
   { title: 'ЖК «Arbat»', city: 'Алматы', developer: 'Nest Stroy', category: 'jk', note: 'Алматы, ул. Наурызбай батыра, 50 — объект с использованием оконных и дверных профилей ArJan.', images: [
     { thumb: '/public/portfolio/arbat-almaty-1-thumb.jpg', full: '/public/portfolio/arbat-almaty-1-full.jpg', alt: 'ЖК «Arbat», Алматы — фасад здания' },
-    { thumb: '/public/portfolio/arbat-almaty-2-thumb.jpg', full: '/public/portfolio/arbat-almaty-2-full.jpg', alt: 'ЖК «Arbat», Алматы — вид с другого ракурса' }
+    { thumb: '/public/portfolio/arbat-almaty-2-thumb.jpg', full: '/public/portfolio/arbat-almaty-2-full.jpg', alt: 'ЖК «Arbat», Алматы — вид с другого ракурса' },
+    { thumb: '/public/portfolio/arbat-almaty-3-thumb.jpg', full: '/public/portfolio/arbat-almaty-3-full.jpg', alt: 'ЖК «Arbat», Алматы — фасад здания, свежее фото' }
   ]},
   { title: 'Жилой комплекс на ул. Карасай', city: 'Алматы', developer: '', category: 'jk', note: '', images: [
     { thumb: '/public/portfolio/karasay-almaty-thumb.jpg', full: '/public/portfolio/karasay-almaty-full.jpg', alt: 'Жилой комплекс на ул. Карасай, 84/2, Алматы' }
@@ -240,8 +265,12 @@ window.ARJAN_PORTFOLIO = [
   ]},
   { title: 'Бизнес-центр AIGP', city: 'Алматы', developer: '', category: 'product', note: '', images: [
     { thumb: '/public/portfolio/aigp-exterior-thumb.jpg', full: '/public/portfolio/aigp-exterior-full.jpg', alt: 'Бизнес-центр AIGP, Алматы — фасад здания' },
+    { thumb: '/public/portfolio/aigp-almaty-6-thumb.jpg', full: '/public/portfolio/aigp-almaty-6-full.jpg', alt: 'Бизнес-центр AIGP, Алматы — фасад, вид снизу' },
+    { thumb: '/public/portfolio/aigp-almaty-7-thumb.jpg', full: '/public/portfolio/aigp-almaty-7-full.jpg', alt: 'Бизнес-центр AIGP, Алматы — вход, вывеска AIGP' },
     { thumb: '/public/portfolio/aigp-interior-1-thumb.jpg', full: '/public/portfolio/aigp-interior-1-full.jpg', alt: 'Бизнес-центр AIGP — интерьер, стеклянные перегородки' },
-    { thumb: '/public/portfolio/aigp-interior-2-thumb.jpg', full: '/public/portfolio/aigp-interior-2-full.jpg', alt: 'Бизнес-центр AIGP — офисные двери из стекла и алюминия' }
+    { thumb: '/public/portfolio/aigp-almaty-8-thumb.jpg', full: '/public/portfolio/aigp-almaty-8-full.jpg', alt: 'Бизнес-центр AIGP — коридор со стеклянными перегородками' },
+    { thumb: '/public/portfolio/aigp-interior-2-thumb.jpg', full: '/public/portfolio/aigp-interior-2-full.jpg', alt: 'Бизнес-центр AIGP — офисные двери из стекла и алюминия' },
+    { thumb: '/public/portfolio/aigp-almaty-9-thumb.jpg', full: '/public/portfolio/aigp-almaty-9-full.jpg', alt: 'Бизнес-центр AIGP — двери из стекла и алюминия крупным планом' }
   ]},
   { title: 'Оконная конструкция крупным планом', city: 'Алматы', developer: '', category: 'product', note: '', images: [
     { thumb: '/public/portfolio/window-detail-1-thumb.jpg', full: '/public/portfolio/window-detail-1-full.jpg', alt: 'Окно крупным планом, фасад здания' }
@@ -251,7 +280,25 @@ window.ARJAN_PORTFOLIO = [
     { thumb: '/public/portfolio/window-detail-3-thumb.jpg', full: '/public/portfolio/window-detail-3-full.jpg', alt: 'Окно крупным планом — другой ракурс' }
   ]},
   { title: 'Фрагмент фасада', city: 'Алматы', developer: '', category: 'product', note: '', images: [
-    { thumb: '/public/portfolio/facade-detail-thumb.jpg', full: '/public/portfolio/facade-detail-full.jpg', alt: 'Фрагмент фасада жилого комплекса с окнами' }
+    { thumb: '/public/portfolio/facade-detail-thumb.jpg', full: '/public/portfolio/facade-detail-full.jpg', alt: 'Фрагмент фасада жилого комплекса с окнами' },
+    { thumb: '/public/portfolio/facade-detail-almaty-2-thumb.jpg', full: '/public/portfolio/facade-detail-almaty-2-full.jpg', alt: 'Фрагмент фасада жилого комплекса — балконы крупным планом' }
+  ]},
+  { title: 'Жилой комплекс', city: 'Алматы', developer: '', category: 'jk', note: '', images: [
+    { thumb: '/public/portfolio/tower-cream-almaty-thumb.jpg', full: '/public/portfolio/tower-cream-almaty-full.jpg', alt: 'Жилой комплекс в Алматы — фасад здания' }
+  ]},
+  { title: 'Жилой комплекс', city: 'Алматы', developer: '', category: 'jk', note: '', images: [
+    { thumb: '/public/portfolio/bluetower-almaty-thumb.jpg', full: '/public/portfolio/bluetower-almaty-full.jpg', alt: 'Жилой комплекс в Алматы — фасад со стеклянным остеклением' }
+  ]},
+  { title: 'Жилой комплекс', city: 'Алматы', developer: '', category: 'jk', note: '', images: [
+    { thumb: '/public/portfolio/duo-towers-almaty-thumb.jpg', full: '/public/portfolio/duo-towers-almaty-full.jpg', alt: 'Жилой комплекс из двух башен, Алматы' }
+  ]},
+  { title: 'Жилой комплекс', city: 'Алматы', developer: '', category: 'jk', note: '', images: [
+    { thumb: '/public/portfolio/orange-complex-almaty-1-thumb.jpg', full: '/public/portfolio/orange-complex-almaty-1-full.jpg', alt: 'Жилой комплекс, Алматы — фасад здания' },
+    { thumb: '/public/portfolio/orange-complex-almaty-2-thumb.jpg', full: '/public/portfolio/orange-complex-almaty-2-full.jpg', alt: 'Жилой комплекс, Алматы — общий план' }
+  ]},
+  { title: 'Жилой комплекс', city: 'Алматы', developer: '', category: 'jk', note: '', images: [
+    { thumb: '/public/portfolio/redbrick-almaty-1-thumb.jpg', full: '/public/portfolio/redbrick-almaty-1-full.jpg', alt: 'Жилой комплекс с кирпичным фасадом, Алматы — фасад здания' },
+    { thumb: '/public/portfolio/redbrick-almaty-2-thumb.jpg', full: '/public/portfolio/redbrick-almaty-2-full.jpg', alt: 'Жилой комплекс с кирпичным фасадом, Алматы — другой ракурс' }
   ]},
   { title: 'Сборка конструкций', city: 'Алматы, производство', developer: '', category: 'production', note: '', images: [
     { thumb: '/public/production/worker-arjan-logo-thumb.jpg', full: '/public/production/worker-arjan-logo-full.jpg', alt: 'Сотрудник ArJan с оконной рамой на производстве' },
@@ -279,6 +326,14 @@ window.ARJAN_PORTFOLIO = [
   ]}
 ];
 </script>
+
+<div class="video-modal-backdrop" id="videoModal">
+  <div class="video-modal">
+    <button class="video-modal-close" aria-label="Закрыть видео"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="video-modal-frame"></div>
+  </div>
+</div>
+
 <script src="/assets/js/site-data.js?v=20260822"></script>
 <script src="/assets/js/main.js?v=20260822"></script>
 <script src="/assets/js/portfolio.js?v=20260822"></script>

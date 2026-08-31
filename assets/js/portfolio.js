@@ -21,7 +21,7 @@
         '<div class="body">' +
           '<h3>' + item.title + '</h3>' +
           '<div class="pf-meta">' + [item.city, item.developer].filter(Boolean).join(' · ') + '</div>' +
-          (item.note ? '<div class="pf-note">' + item.note + '</div>' : '') +
+          '<div class="pf-note">' + (item.note || 'Объект с использованием оконных и дверных профилей ArJan.') + '</div>' +
         '</div>' +
       '</button>'
     );

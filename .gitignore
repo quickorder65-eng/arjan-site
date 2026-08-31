@@ -8,5 +8,10 @@ Thumbs.db
 public/photos/
 public/videos/IMG_2107.MP4
 public/videos/IMG_8470.MOV
+public/DJI_*.JPG
+public/IMG_*.MOV
+public/IMG_*.JPG
+public/IMG_*.MP4
+public/Без названия.png
 
 .vercel
