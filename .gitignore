@@ -1,0 +1,10 @@
+node_modules/
+.vercel/
+.DS_Store
+Thumbs.db
+
+# Raw unused source footage/photos - not referenced anywhere in the site,
+# far too large for GitHub (800MB+ per file) and not needed for deploy
+public/photos/
+public/videos/IMG_2107.MP4
+public/videos/IMG_8470.MOV
