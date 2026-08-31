@@ -63,4 +63,52 @@
   ccount.addEventListener('input', function () { ccount.value = ccount.value.replace(/\D/g, ''); calc(); });
   [cw, ch].forEach(function (el) { el.addEventListener('input', function () { fill(el); calc(); }); });
   fill(cw); fill(ch); calc();
+
+  /* ---------- цены из Google-таблицы (необязательно, читаем напрямую — без задержки публикации) ---------- */
+  function applySheetPrices(rows) {
+    var prices = {};
+    (rows || []).forEach(function (r) {
+      var name = (r[0] || '').trim();
+      var price = parseInt(String(r[1] || '').replace(/[^\d]/g, ''), 10);
+      if (name && price) prices[name] = price;
+    });
+    var activeChanged = false;
+    copts.forEach(function (o) {
+      var name = o.dataset.name;
+      if (!prices[name] || o.dataset.base === String(prices[name])) return;
+      o.dataset.base = prices[name];
+      var priceLabel = o.querySelector('.cp');
+      if (priceLabel) priceLabel.textContent = 'от ' + fmt(prices[name]) + ' ₸/м²';
+      if (o.classList.contains('active')) { cbase = prices[name]; activeChanged = true; }
+    });
+    if (activeChanged) calc();
+  }
+
+  var sheetId = window.ARJAN_PRICE_SHEET_ID, apiKey = window.ARJAN_PRICE_SHEET_API_KEY,
+      sheetTab = window.ARJAN_PRICE_SHEET_TAB || 'A1:B50';
+  if (sheetId && apiKey) {
+    var sheetsUrl = 'https://sheets.googleapis.com/v4/spreadsheets/' + sheetId +
+      '/values/' + encodeURIComponent(sheetTab) + '?key=' + apiKey;
+    function fetchSheetPrices() {
+      fetch(sheetsUrl).then(function (r) {
+        if (!r.ok) throw new Error('bad response');
+        return r.json();
+      }).then(function (data) { applySheetPrices(data.values); }).catch(function () {
+        /* таблица недоступна — оставляем текущие цены */
+      });
+    }
+    fetchSheetPrices();
+    /* пока калькулятор виден на экране — проверяем таблицу раз в 20 секунд,
+       чтобы правка админа появлялась у уже открытой страницы, а не только при перезаходе */
+    var polling = false;
+    var pio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting && !polling) {
+          polling = true;
+          setInterval(fetchSheetPrices, 20000);
+        }
+      });
+    });
+    pio.observe(root);
+  }
 })();

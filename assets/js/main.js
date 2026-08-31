@@ -6,6 +6,12 @@
   'use strict';
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* отправить цель в Яндекс.Метрику, если счётчик подключён (см. site-data.js) */
+  function ymGoal(name) {
+    var id = window.ARJAN_YM_ID;
+    if (id && window.ym) { try { window.ym(id, 'reachGoal', name); } catch (e) {} }
+  }
+
   var ICONS = {
     pin: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"/><circle cx="12" cy="9" r="2.5"/></svg>',
     phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.11 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.79.63 2.65a2 2 0 0 1-.45 2.11L8.09 9.67a16 16 0 0 0 6 6l1.19-1.19a2 2 0 0 1 2.11-.45c.86.3 1.75.51 2.65.63A2 2 0 0 1 22 16.92Z"/></svg>',
@@ -210,24 +216,29 @@
   /* ---------- inline gif-style player (autoplay, muted, loop — starts when scrolled into view) ---------- */
   function initInlinePlayers() {
     document.querySelectorAll('[data-inline-video]').forEach(function (wrap) {
-      var started = false;
-      function start() {
-        if (started) return;
-        started = true;
+      var video = null;
+      function ensureVideo() {
+        if (video) return video;
         var src = wrap.getAttribute('data-src');
         var poster = wrap.getAttribute('data-poster');
         var v = document.createElement('video');
-        v.src = src; v.muted = true; v.loop = true; v.autoplay = true; v.playsInline = true; v.preload = 'auto'; v.poster = poster;
+        v.src = src; v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'auto'; v.poster = poster;
         v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
         v.style.width = '100%'; v.style.height = '100%'; v.style.objectFit = 'cover';
         wrap.innerHTML = '';
         wrap.appendChild(v);
-        var playPromise = v.play();
-        if (playPromise && playPromise.catch) playPromise.catch(function () {});
+        video = v;
+        return v;
       }
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (en) {
-          if (en.isIntersecting) { start(); io.disconnect(); }
+          if (en.isIntersecting) {
+            var v = ensureVideo();
+            var playPromise = v.play();
+            if (playPromise && playPromise.catch) playPromise.catch(function () {});
+          } else if (video) {
+            video.pause();
+          }
         });
       }, { threshold: .35 });
       io.observe(wrap);
@@ -393,6 +404,7 @@
         if (btn) { btn.disabled = true; btn.dataset.origText = btn.textContent; btn.textContent = 'Отправляем…'; }
         setTimeout(function () {
           if (msg) { msg.textContent = 'Заявка отправлена! Менеджер свяжется с вами в ближайшее время.'; msg.className = 'form-msg ok'; }
+          ymGoal('form_submit');
           form.reset();
           if (btn) { btn.textContent = 'Заявка отправлена ✓'; }
           setTimeout(function () {
@@ -401,6 +413,46 @@
         }, 700);
       });
     });
+  }
+
+  /* ---------- Яндекс.Метрика ---------- */
+  function initAnalytics() {
+    var id = window.ARJAN_YM_ID;
+    if (!id) return; // счётчик не настроен — ничего не грузим, сайт работает как обычно
+
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) return; }
+      k = e.createElement(t); a = e.getElementsByTagName(t)[0];
+      k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+
+    window.ym(id, 'init', {
+      clickmap: true,
+      trackLinks: true,
+      accurateTrackBounce: true,
+      webvisor: true
+    });
+
+    /* цели — ключевые действия, которые считаем заявкой/интересом */
+    document.querySelectorAll('.wa-float').forEach(function (b) {
+      b.addEventListener('click', function () { ymGoal('whatsapp_open'); });
+    });
+    var waOpenBtn = document.getElementById('waOpenBtn');
+    if (waOpenBtn) waOpenBtn.addEventListener('click', function () { ymGoal('whatsapp_click'); });
+    var cwa = document.getElementById('cwa');
+    if (cwa) cwa.addEventListener('click', function () { ymGoal('calc_whatsapp_click'); });
+    document.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
+      a.addEventListener('click', function () { ymGoal('phone_click'); });
+    });
+    var calcRoot = document.getElementById('calc');
+    if (calcRoot) {
+      var calcFired = false;
+      calcRoot.addEventListener('click', function () {
+        if (!calcFired) { calcFired = true; ymGoal('calc_interact'); }
+      });
+    }
   }
 
   ready(function () {
@@ -415,5 +467,6 @@
     initForms();
     initReveal();
     initCounters();
+    initAnalytics();
   });
 })();
