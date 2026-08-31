@@ -264,21 +264,37 @@
     var drawer = document.getElementById('waDrawer');
     var backdrop = document.getElementById('waDrawerBackdrop');
     if (!floatBtn || !drawer) return;
-    var select = drawer.querySelector('#waBranchSelect');
+    var listEl = drawer.querySelector('[data-wa-branches]');
     var openBtn = drawer.querySelector('#waOpenBtn');
     var closeBtn = drawer.querySelector('.wa-close');
 
     var branches = window.ARJAN_BRANCHES || [];
-    if (select) {
-      select.innerHTML = branches.map(function (b) {
-        return '<option value="' + b.whatsapp + '">' + b.city + ' — ' + b.phoneDisplay + '</option>';
+    var current = (branches[0] && branches[0].whatsapp) || window.ARJAN_WA_MAIN || '77088005929';
+
+    if (listEl) {
+      listEl.innerHTML = branches.map(function (b, i) {
+        return (
+          '<button type="button" class="wa-branch-opt' + (i === 0 ? ' active' : '') + '" data-wa="' + b.whatsapp + '" aria-pressed="' + (i === 0) + '">' +
+            '<svg class="wbo-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.58 7-13A7 7 0 0 0 5 9c0 5.42 7 13 7 13Z"/><circle cx="12" cy="9" r="2.5"/></svg>' +
+            '<span class="wbo-txt"><span class="wbo-city">' + b.city + '</span><span class="wbo-phone">' + b.phoneDisplay + '</span></span>' +
+            '<span class="wbo-tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6"><path d="M5 13l4 4L19 7"/></svg></span>' +
+          '</button>'
+        );
       }).join('');
+      listEl.addEventListener('click', function (e) {
+        var btn = e.target.closest('.wa-branch-opt');
+        if (!btn) return;
+        listEl.querySelectorAll('.wa-branch-opt').forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+        current = btn.dataset.wa;
+        updateHref();
+      });
     }
     function updateHref() {
-      var wa = (select && select.value) || window.ARJAN_WA_MAIN || '77088005929';
+      var wa = current || window.ARJAN_WA_MAIN || '77088005929';
       openBtn.href = 'https://wa.me/' + wa + '?text=' + encodeURIComponent('Здравствуйте! Хочу узнать подробнее про окна и двери ArJan.');
     }
-    if (select) select.addEventListener('change', updateHref);
     updateHref();
 
     function openDrawer() {
