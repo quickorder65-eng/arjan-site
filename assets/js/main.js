@@ -115,13 +115,15 @@
       var raw = node.textContent.replace(/\s/g, '');
       var target = parseInt(raw, 10);
       if (!target && target !== 0) return;
-      if (reduceMotion) { node.textContent = target.toLocaleString('ru-RU'); return; }
+      var noGroup = el.getAttribute('data-no-group') === '1';
+      var fmt = function (n) { return noGroup ? String(n) : n.toLocaleString('ru-RU'); };
+      if (reduceMotion) { node.textContent = fmt(target); return; }
       var t0 = performance.now(), dur = 1200;
       (function tick(now) {
         var p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
-        node.textContent = Math.round(target * e).toLocaleString('ru-RU');
+        node.textContent = fmt(Math.round(target * e));
         if (p < 1) requestAnimationFrame(tick);
-        else node.textContent = target.toLocaleString('ru-RU');
+        else node.textContent = fmt(target);
       })(t0);
     }
 
