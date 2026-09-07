@@ -483,7 +483,7 @@
     document.querySelectorAll('.frow select').forEach(enhanceSelect);
   }
 
-  /* ---------- forms: validation + fake submit ---------- */
+  /* ---------- forms: validation + отправка заявки в CRM ---------- */
   function initForms() {
     document.querySelectorAll('form.cform').forEach(function (form) {
       var phoneInput = form.querySelector('input[type="tel"]');
@@ -510,15 +510,40 @@
         var btn = form.querySelector('button[type="submit"], .js-submit');
         if (btn && btn.disabled) return;
         if (btn) { btn.disabled = true; btn.dataset.origText = btn.textContent; btn.textContent = 'Отправляем…'; }
-        setTimeout(function () {
-          if (msg) { msg.textContent = 'Заявка отправлена! Менеджер свяжется с вами в ближайшее время.'; msg.className = 'form-msg ok'; }
-          ymGoal('form_submit');
-          form.reset();
-          if (btn) { btn.textContent = 'Заявка отправлена ✓'; }
-          setTimeout(function () {
-            if (btn) { btn.disabled = false; btn.textContent = btn.dataset.origText; }
-          }, 3500);
-        }, 700);
+
+        var payload = {
+          name: (form.querySelector('[name="name"]') || {}).value || '',
+          phone: (form.querySelector('[name="phone"]') || {}).value || '',
+          city: (form.querySelector('[name="city"]') || {}).value || '',
+          product: (form.querySelector('[name="product"]') || {}).value || '',
+          comment: (form.querySelector('[name="comment"]') || {}).value || '',
+          source: (document.title || '') + ' — ' + location.pathname
+        };
+
+        fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+          .then(function (r) { return r.json().then(function (d) { return { ok: r.ok && d.ok, data: d }; }); })
+          .catch(function () { return { ok: false, data: {} }; })
+          .then(function (result) {
+            if (result.ok) {
+              if (msg) { msg.textContent = 'Заявка отправлена! Менеджер свяжется с вами в ближайшее время.'; msg.className = 'form-msg ok'; }
+              ymGoal('form_submit');
+              form.reset();
+              if (btn) { btn.textContent = 'Заявка отправлена ✓'; }
+            } else {
+              if (msg) { msg.textContent = 'Не получилось отправить заявку. Позвоните нам, пожалуйста, по телефону на сайте, или попробуйте ещё раз.'; msg.className = 'form-msg err'; }
+              if (btn) { btn.textContent = btn.dataset.origText; }
+            }
+            if (btn) {
+              setTimeout(function () {
+                btn.disabled = false;
+                if (result.ok) btn.textContent = btn.dataset.origText;
+              }, 3500);
+            }
+          });
       });
     });
   }
