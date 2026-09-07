@@ -489,6 +489,20 @@
       var phoneInput = form.querySelector('input[type="tel"]');
       if (phoneInput) attachPhoneMask(phoneInput);
 
+      // honeypot-поле: людям не видно, боты-парсеры его находят и заполняют
+      var honeypot = document.createElement('input');
+      honeypot.type = 'text';
+      honeypot.name = 'website';
+      honeypot.tabIndex = -1;
+      honeypot.autocomplete = 'off';
+      honeypot.setAttribute('aria-hidden', 'true');
+      honeypot.style.cssText = 'position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;opacity:0';
+      form.appendChild(honeypot);
+
+      // метка времени загрузки формы — нужна серверу, чтобы отсеивать
+      // мгновенные автоматические отправки (живой человек так быстро не печатает)
+      var loadedAt = Date.now();
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var valid = true;
@@ -517,7 +531,9 @@
           city: (form.querySelector('[name="city"]') || {}).value || '',
           product: (form.querySelector('[name="product"]') || {}).value || '',
           comment: (form.querySelector('[name="comment"]') || {}).value || '',
-          source: (document.title || '') + ' — ' + location.pathname
+          source: (document.title || '') + ' — ' + location.pathname,
+          website: honeypot.value || '',
+          loadedAt: loadedAt
         };
 
         fetch('/api/lead', {
