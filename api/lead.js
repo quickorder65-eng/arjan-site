@@ -102,6 +102,8 @@ module.exports = async function handler(req, res) {
     const product = (body.product || '').toString().trim().slice(0, 200);
     const comment = (body.comment || '').toString().trim().slice(0, 2000);
     const source = (body.source || '').toString().trim().slice(0, 200);
+    const role = (body.role || '').toString().trim().slice(0, 100);
+    const company = (body.company || '').toString().trim().slice(0, 200);
 
     const digitsOnly = phone.replace(/\D/g, '');
     if (digitsOnly.length < 10 || phone.length > 30) {
@@ -109,14 +111,21 @@ module.exports = async function handler(req, res) {
     }
 
     const commentLines = [];
+    if (role) commentLines.push('Тип клиента: ' + role);
+    if (company) commentLines.push('Компания: ' + company);
     if (city) commentLines.push('Город: ' + city);
     if (product) commentLines.push('Продукция: ' + product);
     if (comment) commentLines.push('Комментарий: ' + comment);
     if (source) commentLines.push('Страница: ' + source);
 
+    const titleParts = ['Заявка с сайта arjan.kz'];
+    if (role) titleParts.push(role);
+    else if (product) titleParts.push(product);
+
     const params = new URLSearchParams();
-    params.append('fields[TITLE]', 'Заявка с сайта arjan.kz' + (product ? ' — ' + product : ''));
+    params.append('fields[TITLE]', titleParts.join(' — '));
     params.append('fields[NAME]', name || 'Без имени');
+    if (company) params.append('fields[COMPANY_TITLE]', company);
     params.append('fields[PHONE][0][VALUE]', phone);
     params.append('fields[PHONE][0][VALUE_TYPE]', 'WORK');
     if (commentLines.length) params.append('fields[COMMENTS]', commentLines.join('\n'));

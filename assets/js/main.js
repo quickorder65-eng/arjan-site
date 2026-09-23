@@ -531,6 +531,8 @@
           city: (form.querySelector('[name="city"]') || {}).value || '',
           product: (form.querySelector('[name="product"]') || {}).value || '',
           comment: (form.querySelector('[name="comment"]') || {}).value || '',
+          role: (form.querySelector('[name="role"]') || {}).value || '',
+          company: (form.querySelector('[name="company"]') || {}).value || '',
           source: (document.title || '') + ' — ' + location.pathname,
           website: honeypot.value || '',
           loadedAt: loadedAt
