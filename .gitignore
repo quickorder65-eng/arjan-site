@@ -15,3 +15,7 @@ public/IMG_*.MP4
 public/Без названия.png
 
 .vercel
+
+# Cowork session artifacts - not site content
+.claude/
+Claude outputs/

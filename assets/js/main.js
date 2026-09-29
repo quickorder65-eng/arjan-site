@@ -91,7 +91,7 @@
           setTimeout(function () { el.classList.remove('reveal', 'in'); }, 750);
         }, d);
       });
-    }, { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+    }, { threshold: 0, rootMargin: '0px 0px 40% 0px' });
     document.querySelectorAll('.shead,.calc,.ctaband,.cform,.partners,.map-block,.text-block').forEach(function (el) {
       el.classList.add('reveal'); io.observe(el);
     });
@@ -99,6 +99,15 @@
       document.querySelectorAll(sel).forEach(function (el, i) {
         el.classList.add('reveal'); el.dataset.rd = Math.min(i, 6) * 70; io.observe(el);
       });
+    });
+  }
+
+  /* ---------- fade photos in only once fully loaded (no half-painted images while scrolling) ---------- */
+  function initImgFade() {
+    document.querySelectorAll('img.ph-fade').forEach(function (img) {
+      if (img.complete && img.naturalWidth) { img.classList.add('is-loaded'); return; }
+      img.addEventListener('load', function () { img.classList.add('is-loaded'); });
+      img.addEventListener('error', function () { img.classList.add('is-loaded'); });
     });
   }
 
@@ -618,6 +627,7 @@
     initCustomSelects();
     initForms();
     initReveal();
+    initImgFade();
     initCounters();
     initAnalytics();
   });

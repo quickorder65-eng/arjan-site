@@ -104,6 +104,8 @@ module.exports = async function handler(req, res) {
     const source = (body.source || '').toString().trim().slice(0, 200);
     const role = (body.role || '').toString().trim().slice(0, 100);
     const company = (body.company || '').toString().trim().slice(0, 200);
+    const objectType = (body.objectType || '').toString().trim().slice(0, 100);
+    const size = (body.size || '').toString().trim().slice(0, 100);
 
     const digitsOnly = phone.replace(/\D/g, '');
     if (digitsOnly.length < 10 || phone.length > 30) {
@@ -112,9 +114,11 @@ module.exports = async function handler(req, res) {
 
     const commentLines = [];
     if (role) commentLines.push('Тип клиента: ' + role);
+    if (objectType) commentLines.push('Тип объекта: ' + objectType);
     if (company) commentLines.push('Компания: ' + company);
     if (city) commentLines.push('Город: ' + city);
     if (product) commentLines.push('Продукция: ' + product);
+    if (size) commentLines.push('Размеры: ' + size);
     if (comment) commentLines.push('Комментарий: ' + comment);
     if (source) commentLines.push('Страница: ' + source);
 
