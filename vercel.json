@@ -1,5 +1,8 @@
 {
   "outputDirectory": ".",
+  "redirects": [
+    { "source": "/products/mdf-paneli-agt.html", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",
