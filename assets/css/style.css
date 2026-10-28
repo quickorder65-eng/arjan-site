@@ -461,6 +461,7 @@ footer .logo img{filter:brightness(0) invert(1)}
 .social-row a:hover{background:var(--sun);border-color:var(--sun);color:#fff}
 .social-row svg{width:18px;height:18px}
 .cform{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px}
+.cform .b24-form-header{display:none}
 .cform .frow{margin-bottom:14px}
 .cform label{display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--steel);margin-bottom:6px}
 .cform input,.cform select,.cform textarea{width:100%;padding:14px;border:1px solid var(--line-strong);border-radius:9px;font-family:var(--font-body);font-size:15px;background:var(--paper);color:var(--ink)}
