@@ -42,7 +42,7 @@ button{font:inherit}
   display:inline-flex;align-items:center;gap:10px;
 }
 .eyebrow::before{content:"";width:22px;height:1px;background:var(--sun)}
-h1,h2,h3{font-family:var(--font-display);font-weight:800;line-height:1.05;letter-spacing:-.02em}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.15;letter-spacing:-.01em}
 .section{padding:96px 0;position:relative}
 .section--tight{padding:56px 0}
 .section--mist{background:var(--mist)}
