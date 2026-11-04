@@ -109,7 +109,7 @@
     </nav>
     <div class="nav-cta">
       <a href="tel:+77088005929" class="nav-phone">8 (708) 800-59-29</a>
-      <a href="#contacts" class="btn btn--sun">Оставить заявку</a>
+      <a href="#calc" class="btn btn--sun">Рассчитать</a>
     </div>
     <button class="burger" aria-label="Меню" aria-expanded="false" id="burger"><span></span><span></span><span></span></button>
   </div>
@@ -136,7 +136,7 @@
       <p class="lead">Окна, двери и раздвижные конструкции с бесплатным замером, доставкой и монтажом собственными бригадами — для дома и бизнеса.</p>
       <div class="hero-cta">
         <a href="/developers.html" class="btn btn--sun">Для бизнеса и объектов →</a>
-        <a href="#contacts" class="btn btn--ghost">Частным клиентам</a>
+        <a href="#calc" class="btn btn--ghost">Частным клиентам</a>
       </div>
       <div class="hero-stats">
         <div class="stat"><div class="num" data-no-group="1">2003</div><div class="lbl">работаем с этого года</div></div>
@@ -208,7 +208,7 @@
           <li>Рассрочка Kaspi, бесплатный замер</li>
           <li>Гарантия 5+ лет на продукцию, 1 год на фурнитуру</li>
         </ul>
-        <a href="#contacts" class="btn btn--ghost">Подобрать окно →</a>
+        <a href="#calc" class="btn btn--ghost">Подобрать окно →</a>
       </div>
     </div>
   </div>
@@ -346,6 +346,87 @@
   </div>
 </section>
 
+<!-- calculator -->
+<section class="section" id="calc">
+  <div class="wrap">
+    <div class="shead">
+      <span class="eyebrow">Калькулятор</span>
+      <h2>Рассчитайте стоимость за минуту</h2>
+      <p class="lead">Укажите параметры — покажем ориентировочную стоимость. Точный расчёт менеджер подготовит после бесплатного замера.</p>
+    </div>
+    <div class="calc">
+      <div class="calc-form">
+        <div class="row">
+          <div class="clabel">Что нужно остеклить</div>
+          <div class="copts" id="copts">
+            <button type="button" class="copt active" data-base="45000" data-name="Пластиковые окна ПВХ">
+              <svg class="ci2" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="9" y="6" width="30" height="36" rx="2"/><line x1="24" y1="6" x2="24" y2="42"/><line x1="9" y1="24" x2="39" y2="24"/></svg>
+              <span class="ctxt"><span class="ct">Окна ПВХ</span><span class="cp">от 45 000 ₸/м²</span></span>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6"><path d="M5 13l4 4L19 7"/></svg></span>
+            </button>
+            <button type="button" class="copt" data-base="48000" data-name="Пластиковые двери">
+              <svg class="ci2" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="12" y="5" width="24" height="38" rx="1"/><line x1="12" y1="17" x2="36" y2="17"/><line x1="12" y1="29" x2="36" y2="29"/></svg>
+              <span class="ctxt"><span class="ct">Пластиковые двери</span><span class="cp">от 48 000 ₸/м²</span></span>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6"><path d="M5 13l4 4L19 7"/></svg></span>
+            </button>
+            <button type="button" class="copt" data-base="65000" data-name="Алюминиевые окна">
+              <svg class="ci2" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="6" y="9" width="36" height="30" rx="1"/><line x1="6" y1="19" x2="42" y2="19"/><line x1="20" y1="9" x2="20" y2="39"/></svg>
+              <span class="ctxt"><span class="ct">Алюминиевые окна</span><span class="cp">от 65 000 ₸/м²</span></span>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6"><path d="M5 13l4 4L19 7"/></svg></span>
+            </button>
+            <button type="button" class="copt" data-base="55000" data-name="Алюминиевые двери">
+              <svg class="ci2" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="9" y="5" width="30" height="38" rx="1"/><line x1="9" y1="17" x2="39" y2="17"/><line x1="9" y1="29" x2="39" y2="29"/><line x1="24" y1="5" x2="24" y2="43"/></svg>
+              <span class="ctxt"><span class="ct">Алюминиевые двери</span><span class="cp">от 55 000 ₸/м²</span></span>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6"><path d="M5 13l4 4L19 7"/></svg></span>
+            </button>
+            <button type="button" class="copt" data-base="50000" data-name="Раздвижные системы">
+              <svg class="ci2" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="10" width="38" height="28" rx="1"/><path d="M24 10v28"/><path d="M14 17l-5 4 5 4"/><path d="M34 17l5 4-5 4"/></svg>
+              <span class="ctxt"><span class="ct">Раздвижные</span><span class="cp">от 50 000 ₸/м²</span></span>
+              <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6"><path d="M5 13l4 4L19 7"/></svg></span>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="crange">
+            <div class="slider">
+              <div class="clabel">Ширина <span class="cval"><span id="cwv">140</span> см</span></div>
+              <input type="range" id="cw" min="40" max="400" step="5" value="140" aria-label="Ширина в см">
+            </div>
+            <div class="slider">
+              <div class="clabel">Высота <span class="cval"><span id="chv">150</span> см</span></div>
+              <input type="range" id="ch" min="40" max="400" step="5" value="150" aria-label="Высота в см">
+            </div>
+          </div>
+        </div>
+        <div class="row lrow">
+          <div>
+            <div class="clabel">Количество</div>
+            <div class="stepper">
+              <button type="button" id="cminus" aria-label="Уменьшить количество">−</button>
+              <input type="text" id="ccount" value="1" inputmode="numeric" aria-label="Количество конструкций">
+              <button type="button" id="cplus" aria-label="Увеличить количество">+</button>
+            </div>
+          </div>
+          <div style="flex:1;min-width:210px">
+            <div class="clabel">Город</div>
+            <div class="seg" id="cseg">
+              <button type="button" class="active">Алматы</button>
+              <button type="button">Атырау</button>
+              <button type="button">Актау</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-out">
+        <div class="lbl">Ориентировочная стоимость</div>
+        <div class="price" id="cprice">— ₸</div>
+        <div class="note" id="carea">Двигайте ползунки, чтобы увидеть расчёт</div>
+        <a href="https://wa.me/77088005929" id="cwa" class="btn btn--wa" target="_blank" rel="noopener">Уточнить в WhatsApp →</a>
+      </div>
+    </div>
+    <p class="calc-disclaimer">Цены являются предварительными, без учёта акций и скидок. Для подробностей обратитесь по нашим контактам.</p>
+  </div>
+</section>
 
 <!-- portfolio teaser -->
 <section class="section section--mist" id="cases">
@@ -520,7 +601,7 @@
       <div class="qa"><button aria-expanded="false"><span>В каких регионах работает ArJan?</span><span class="ico"></span></button><div class="ans"><p>У ArJan есть филиалы в нескольких городах Казахстана. Компания также организует доставку продукции по всей территории Казахстана.</p></div></div>
       <div class="qa"><button aria-expanded="false"><span>Где находятся филиалы?</span><span class="ico"></span></button><div class="ans"><p>Головной офис и производство — в Алматы, ул. Казыбаева, 12Б/1. Филиал в Атырау — ул. Отешкали Атамбаев, 27г. Филиал в Актау — Промышленная зона 2, 59.</p></div></div>
       <div class="qa"><button aria-expanded="false"><span>Как получить каталог?</span><span class="ico"></span></button><div class="ans"><p>Оставьте заявку в форме на сайте или напишите в WhatsApp — менеджер вышлет каталог продукции и актуальные образцы.</p></div></div>
-      <div class="qa"><button aria-expanded="false"><span>Как рассчитать стоимость?</span><span class="ico"></span></button><div class="ans"><p>Оставьте заявку в форме на сайте — точную стоимость менеджер подготовит после бесплатного замера.</p></div></div>
+      <div class="qa"><button aria-expanded="false"><span>Как рассчитать стоимость?</span><span class="ico"></span></button><div class="ans"><p>Воспользуйтесь калькулятором на сайте для ориентировочного расчёта (цены предварительные, без скидок) или оставьте заявку — точную стоимость менеджер подготовит после бесплатного замера.</p></div></div>
       <div class="qa"><button aria-expanded="false"><span>Выполняется ли замер?</span><span class="ico"></span></button><div class="ans"><p>Да, выезд замерщика бесплатный.</p></div></div>
       <div class="qa"><button aria-expanded="false"><span>Выполняется ли монтаж?</span><span class="ico"></span></button><div class="ans"><p>Да, монтаж выполняется собственными бригадами и входит в договор.</p></div></div>
       <div class="qa"><button aria-expanded="false"><span>Какая предоставляется гарантия?</span><span class="ico"></span></button><div class="ans"><p>Гарантия 5+ лет на продукцию и 1 год на фурнитуру.</p></div></div>
@@ -664,5 +745,6 @@ var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
 
 <script src="/assets/js/site-data.js?v=20260929"></script>
 <script src="/assets/js/main.js?v=20260929"></script>
+<script src="/assets/js/calc.js?v=20261104"></script>
 </body>
 </html>

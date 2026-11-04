@@ -336,6 +336,7 @@ footer .logo img{filter:brightness(0) invert(1)}
 .calc-out .note{color:#9AA6AD;font-size:13px;margin:8px 0 24px;min-height:34px;line-height:1.45}
 @media(max-width:780px){.calc{grid-template-columns:1fr}}
 @media(max-width:430px){.copts{grid-template-columns:1fr}}
+.calc-disclaimer{font-size:12.5px;color:var(--steel);margin-top:14px;max-width:70ch}
 
 /* ===== cases / portfolio teaser ===== */
 .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
