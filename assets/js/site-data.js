@@ -84,44 +84,6 @@ window.ARJAN_SOCIAL = [
   { id: 'tiktok', name: 'TikTok', url: 'https://www.tiktok.com/@arjan.kz1' }
 ];
 
-/* ===== Цены калькулятора из Google-таблицы =====
-   Таблица уже создана в Google Диске (аккаунт, подключённый к сессии):
-   "ArJan — Цены калькулятора" — https://docs.google.com/spreadsheets/d/13bZ2ZL9CZvpl29pGOuIUP6FiblAwQNwFu9tuvU16kDQ/edit
-   Колонки: Название | Цена. Названия строк точно совпадают с data-name
-   кнопок калькулятора: "Пластиковые окна ПВХ", "Пластиковые двери",
-   "Алюминиевые окна", "Алюминиевые двери", "Раздвижные системы".
-
-   Осталось 2 шага, чтобы цены обновлялись на сайте вживую (без перезагрузки
-   страницы, ~раз в 20 секунд, пока калькулятор виден на экране):
-
-   1. Открыть таблицу по ссылке выше → «Настройки доступа» (кнопка
-      «Открыть доступ» справа сверху) → «Общий доступ» → «Все, у кого есть
-      ссылка» → роль «Читатель». Это обязательно — без этого сайт не сможет
-      прочитать цены. Это делаю не я — это открывает доступ на просмотр всем
-      по ссылке, такое действие ты подтверждаешь сама в интерфейсе Google.
-   2. Получить бесплатный API-ключ (только для чтения, безопасно вставлять
-      в код сайта): console.cloud.google.com → создать проект → включить
-      «Google Sheets API» → «Credentials» → «Create Credentials» → «API key»
-      → скопировать → вставить в ARJAN_PRICE_SHEET_API_KEY ниже. Для
-      безопасности в настройках ключа можно ограничить его только Sheets API
-      и только доменом сайта (Application restrictions → Websites).
-
-   ARJAN_PRICE_SHEET_TAB оставлен как диапазон "A1:B50", а не название листа —
-   так работает независимо от того, как называется вкладка снизу таблицы.
-
-   ВАЖНО: предыдущий ключ был закоммичен в публичный репозиторий и пойман
-   GitHub secret scanning — он считается скомпрометированным. Перед тем как
-   вписывать сюда новый, обязательно сначала отзови старый ключ
-   (AIzaSyCT1CBtbIzo0ymmfkRxMe0anQgygfADC84) в console.cloud.google.com →
-   APIs & Services → Credentials, и у нового сразу поставь ограничения
-   (Application restrictions → Websites → arjan.kz, www.arjan.kz;
-   API restrictions → только Google Sheets API).
-
-   Пока API-ключ пустой — калькулятор использует цены, зашитые в вёрстку. */
-window.ARJAN_PRICE_SHEET_ID = '13bZ2ZL9CZvpl29pGOuIUP6FiblAwQNwFu9tuvU16kDQ';
-window.ARJAN_PRICE_SHEET_API_KEY = '';
-window.ARJAN_PRICE_SHEET_TAB = 'A1:B50';
-
 /* ===== Товарные категории ===== */
 window.ARJAN_PRODUCTS = [
   {
