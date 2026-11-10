@@ -109,9 +109,17 @@ window.ARJAN_SOCIAL = [
    ARJAN_PRICE_SHEET_TAB оставлен как диапазон "A1:B50", а не название листа —
    так работает независимо от того, как называется вкладка снизу таблицы.
 
+   ВАЖНО: предыдущий ключ был закоммичен в публичный репозиторий и пойман
+   GitHub secret scanning — он считается скомпрометированным. Перед тем как
+   вписывать сюда новый, обязательно сначала отзови старый ключ
+   (AIzaSyCT1CBtbIzo0ymmfkRxMe0anQgygfADC84) в console.cloud.google.com →
+   APIs & Services → Credentials, и у нового сразу поставь ограничения
+   (Application restrictions → Websites → arjan.kz, www.arjan.kz;
+   API restrictions → только Google Sheets API).
+
    Пока API-ключ пустой — калькулятор использует цены, зашитые в вёрстку. */
 window.ARJAN_PRICE_SHEET_ID = '13bZ2ZL9CZvpl29pGOuIUP6FiblAwQNwFu9tuvU16kDQ';
-window.ARJAN_PRICE_SHEET_API_KEY = 'AIzaSyCT1CBtbIzo0ymmfkRxMe0anQgygfADC84';
+window.ARJAN_PRICE_SHEET_API_KEY = '';
 window.ARJAN_PRICE_SHEET_TAB = 'A1:B50';
 
 /* ===== Товарные категории ===== */
