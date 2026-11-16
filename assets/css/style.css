@@ -230,7 +230,8 @@ footer .logo img{filter:brightness(0) invert(1)}
 .path{border:1px solid var(--line);border-radius:var(--r);padding:38px 34px;background:#fff;position:relative;overflow:hidden;transition:.2s}
 .path:hover{border-color:var(--line-strong);transform:translateY(-3px);box-shadow:0 24px 50px -30px rgba(22,25,29,.4)}
 .path .ribbon{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);font-weight:500}
-.path h3{font-size:26px;margin:14px 0 12px}
+.path h3{font-size:26px;margin:14px 0 2px}
+.path-motto{font-family:var(--font-display);font-weight:800;color:var(--sun);font-size:15px;margin:0 0 12px}
 .path ul{list-style:none;margin:20px 0 26px}
 .path li{padding-left:26px;position:relative;margin-bottom:10px;color:var(--graphite)}
 .path li::before{content:"";position:absolute;left:0;top:9px;width:11px;height:11px;border:2px solid var(--sun);border-radius:2px}
