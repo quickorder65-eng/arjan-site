@@ -43,7 +43,7 @@ button{font:inherit}
   display:inline-flex;align-items:center;gap:10px;
 }
 .eyebrow::before{content:"";width:22px;height:1px;background:var(--sun)}
-h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.15;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--font-display);font-weight:800;line-height:1.1;letter-spacing:-.02em}
 .section{padding:96px 0;position:relative}
 .section--tight{padding:56px 0}
 .section--mist{background:var(--mist)}
@@ -141,7 +141,7 @@ footer .logo img{filter:brightness(0) invert(1)}
     linear-gradient(180deg,#fff 0%, var(--paper) 100%);
 }
 .hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.3fr .7fr;gap:54px;align-items:center}
-.hero h1{font-size:clamp(36px,4.6vw,56px);margin:18px 0 20px}
+.hero h1{font-size:clamp(40px,5.4vw,66px);margin:18px 0 20px}
 .hero h1 .hl{color:var(--sun)}
 .hero p.lead{font-size:19px;margin-bottom:14px}
 .hero .lead-strong{font-weight:700;color:var(--ink);font-size:16px;margin:0 0 26px}
@@ -222,7 +222,7 @@ footer .logo img{filter:brightness(0) invert(1)}
 
 /* ===== section head ===== */
 .shead{max-width:720px;margin-bottom:46px}
-.shead h2{font-size:clamp(28px,3.4vw,42px);margin:16px 0 14px}
+.shead h2{font-size:clamp(30px,3.8vw,46px);margin:16px 0 14px}
 .shead-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
 
 /* ===== two paths (B2C / B2B) ===== */
@@ -230,8 +230,8 @@ footer .logo img{filter:brightness(0) invert(1)}
 .path{border:1px solid var(--line);border-radius:var(--r);padding:38px 34px;background:#fff;position:relative;overflow:hidden;transition:.2s}
 .path:hover{border-color:var(--line-strong);transform:translateY(-3px);box-shadow:0 24px 50px -30px rgba(22,25,29,.4)}
 .path .ribbon{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--sun);font-weight:500}
-.path h3{font-size:26px;margin:14px 0 2px}
-.path-motto{font-family:var(--font-display);font-weight:800;color:var(--sun);font-size:15px;margin:0 0 12px}
+.path h3{font-size:19px;font-weight:600;color:var(--steel);margin:14px 0 2px;text-transform:uppercase;letter-spacing:.02em}
+.path-motto{font-family:var(--font-display);font-weight:800;color:var(--sun);font-size:clamp(30px,3.4vw,40px);line-height:1.08;letter-spacing:-.02em;margin:0 0 16px;display:block}
 .path ul{list-style:none;margin:20px 0 26px}
 .path li{padding-left:26px;position:relative;margin-bottom:10px;color:var(--graphite)}
 .path li::before{content:"";position:absolute;left:0;top:9px;width:11px;height:11px;border:2px solid var(--sun);border-radius:2px}
