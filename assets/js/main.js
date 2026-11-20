@@ -335,7 +335,7 @@
       ? ''
       : '<div class="bc-note">Уточняется — свяжитесь по общему номеру</div>';
     return (
-      '<div class="branch-card' + (i === 0 ? ' active' : '') + '" data-branch="' + b.id + '" data-map="' + encodeURIComponent(b.mapQuery) + '" tabindex="0" role="button" aria-pressed="' + (i === 0) + '">' +
+      '<div class="branch-card' + (i === 0 ? ' active' : '') + '" id="branch-' + b.id + '" data-branch="' + b.id + '" data-map="' + encodeURIComponent(b.mapQuery) + '" tabindex="0" role="button" aria-pressed="' + (i === 0) + '">' +
         '<div class="bc-city">' + ICONS.pin + '<span>' + b.city + '</span></div>' +
         '<div class="bc-role">' + b.role + '</div>' +
         '<div class="bc-row">' + ICONS.pin + '<span>' + b.address + '</span></div>' +
@@ -386,6 +386,19 @@
         }
       });
     }
+
+    /* geography cards: clicking a city scrolls to its branch card and selects it */
+    document.querySelectorAll('[data-geo-link]').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var id = link.getAttribute('data-geo-link');
+        var card = document.getElementById('branch-' + id);
+        if (!card || !listEl) return;
+        listEl.querySelectorAll('.branch-card').forEach(function (c) { c.classList.remove('active'); c.setAttribute('aria-pressed', 'false'); });
+        card.classList.add('active');
+        card.setAttribute('aria-pressed', 'true');
+        loadMap(decodeURIComponent(card.dataset.map));
+      });
+    });
   }
 
   /* ---------- KZ phone mask ---------- */
