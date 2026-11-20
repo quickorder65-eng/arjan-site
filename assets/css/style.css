@@ -238,7 +238,7 @@ footer .logo img{filter:brightness(0) invert(1)}
 .path-motto{font-family:var(--font-display);font-weight:700;color:var(--sun);font-size:clamp(27px,3vw,36px);line-height:1.2;letter-spacing:-.005em;margin:0 0 16px;display:block}
 .path ul{list-style:none;margin:20px 0 26px}
 .path li{padding-left:26px;position:relative;margin-bottom:10px;color:var(--graphite)}
-.path li::before{content:"";position:absolute;left:0;top:8px;width:13px;height:13px;background:var(--sun);clip-path:polygon(35% 0,100% 0,100% 100%,0 100%,0 35%)}
+.path li::before{content:"";position:absolute;left:0;top:7px;width:15px;height:15px;background-image:url('/public/branding/bullet-icon.svg');background-size:contain;background-repeat:no-repeat}
 .path--b2b{background:linear-gradient(180deg,#fff, #FBF6EF)}
 .path-actions{display:flex;gap:12px;flex-wrap:wrap}
 @media(max-width:760px){.paths{grid-template-columns:1fr}}
